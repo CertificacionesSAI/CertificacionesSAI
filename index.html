@@ -24,24 +24,40 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 80px;
-  background-color: transparent;
+  height: 150px;
+  background: transparent;            /* base transparente */
   z-index: 999;
-  transition: background-color 0.3s ease;
   display: flex;
-  align-items: center;       
+  align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  position: fixed;
+  isolation: isolate;                 /* asegura capas limpias */
 }
 
-
-.hero {
-  padding-top: 100px;
+/* Capa con el degradado que se va a “prender” con opacidad */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #00b894, #147ecb);
+  opacity: 0;                         /* empieza invisible */
+  transition: opacity 0.4s ease;      /* transición suave */
+  pointer-events: none;
+  z-index: 0;
 }
 
-header.scrolled {
-  background-color: #147ecb; 
+/* Asegura que el contenido del header quede por encima del degradado */
+header > * {
+  position: relative;
+  z-index: 1;
 }
+
+/* Al hacer scroll, solo animamos la opacidad del degradado */
+header.scrolled::before {
+  opacity: 1;
+}
+
 
 
  .logo-container {
@@ -69,11 +85,15 @@ header.scrolled {
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 900;
   position: relative; 
-  padding-right: 25px;
-  font-size: 1.5em;
+  padding-right: 30px; 
+  font-size: 2em; 
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
+
+
+
 
 nav a::after {
   content: "▼";
@@ -757,6 +777,47 @@ nav a:focus::before {
   color: #333;
 }
 
+.sector-empresa {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background: linear-gradient(90deg, #00b894, #147ecb);
+  border-radius: 12px;
+  color: white;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sector-empresa h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.sector-empresa p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.formulario-container {
+  max-width: 650px;
+  margin: 20px;
+  padding: 20px;
+  border: 3px solid transparent;
+  border-radius: 50px;
+  background: 
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #00b894, #147ecb) border-box;
+}
+
+
+.formulario-iframe {
+  width: 100%;      /* ocupa todo el ancho del contenedor */
+  height: 550px;    /* altura del formulario */
+  border: none;     /* sin borde */
+}
+
 
 </style>
 
@@ -772,13 +833,13 @@ nav a:focus::before {
 
 <header>
   <div class="logo-container">
-<img src="logo.png" alt="Logo de SAI Ingeniería" class="logo" style="height: 82px;">
+<img src="logo.png" alt="Logo de SAI Ingeniería" class="logo" style="height: 130px;">
   </div>
  <nav class="header-nav">
   <a href="#" onclick="openModal('modal-mision'); return false;">Misión</a>
   <a href="#" onclick="openModal('modal-vision'); return false;">Visión</a>
   <a href="#" onclick="openModal('modal-trabajo'); return false;">Nuestro trabajo</a>
-  <a href="#" onclick="openModal('modal-opiniones'); return false;">Opiniones</a>
+<a href="#" onclick="openModal('modal-opiniones'); return false;">Tipo de trabajo</a>
 </nav>
 </header>
 <section class="hero">
@@ -809,6 +870,11 @@ nav a:focus::before {
   </section>
 <section class="accesos">
   <h2>Nuestros servicios</h2>
+  <div class="sector-empresa">
+    <h3>Sector de la empresa</h3>
+    <p>San Andrés Islas</p>
+  </div>
+
   <div class="accesos-grid">
 
     <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 0)">
@@ -818,16 +884,20 @@ nav a:focus::before {
     </a>
 
     <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 1)">
-      <img src="Certificacion.svg" alt="Certificación de instalaciones residenciales">
-      <span>Certificación de instalaciones residenciales</span>
-      <div class="descripcion-servicio">Emitimos certificaciones oficiales para instalaciones eléctricas o de gas en hogares.</div>
-    </a>
+  <img src="Certificacion.svg" alt="Certificaciones de instalación residencial y comercial de gas LP">
+  <span>Certificaciones de instalación residencial y comercial de gas LP</span>
+  <div class="descripcion-servicio">Emitimos certificados oficiales para instalaciones de gas LP, en trazados residenciales y comerciales.</div>
+</a>
 
-    <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 2)">
-      <img src="Auditoria.svg" alt="Auditoría de sistemas comerciales e industriales">
-      <span>Auditoría de sistemas comerciales e industriales</span>
-      <div class="descripcion-servicio">Diagnóstico técnico de sistemas industriales para optimizar el rendimiento y cumplimiento.</div>
-    </a>
+
+   <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 2)">
+  <img src="Auditoria.svg" alt="Personal calificado">
+  <span>Personal calificado</span>
+  <div class="descripcion-servicio">
+    Contamos con personal altamente calificado y competente para realizar inspecciones precisas de trazados de gas LP.
+  </div>
+</a>
+
 
   </div>
 </section>
@@ -893,14 +963,18 @@ nav a:focus::before {
 <h3 style="font-weight: bold; font-size: 28px;">🛈 IMPORTANTE</h3>
         <p style="font-size: 18px;">Si deseas solicitar un servicio o inspección, por favor deja tu mensaje en el formulario.</p>
         <p style="font-size: 18px; margin-top: 10px;">Si tienes una <strong>queja o reclamo</strong>, también puedes escribirnos directamente a:</p>
-        <p style="font-size: 18px;"><strong>Correo:</strong> Certificacionessaisas@gmail.com</p>
+        <p style="font-size: 18px;"><strong>Correo:</strong> Pqrcertificacionessaisas@gmail.com</p>
         <p style="font-size: 18px;"><strong>Línea de atención:</strong> (311) 234-9611</p>
       </div>
 
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0GFIFIsK07zEwGXC24_QNfkp8ShTwuXe5rHBPgihbkW1XEg/viewform?embedded=true"
-  width="100%" height="550" frameborder="0" marginheight="0" marginwidth="0"
-  style="border: none; transform: translateX(-300px);">
-</iframe>
+ <div class="formulario-container">
+  <iframe class="formulario-iframe"
+    src="https://docs.google.com/forms/d/e/1FAIpQLSc0GFIFIsK07zEwGXC24_QNfkp8ShTwuXe5rHBPgihbkW1XEg/viewform?embedded=true"
+    frameborder="0" marginheight="0" marginwidth="0">
+  </iframe>
+</div>
+
+
 
     </div>
   </div>
@@ -915,13 +989,12 @@ nav a:focus::before {
 <div class="modal-content">
     <span class="close" onclick="closeModal('modal-mision')">&times;</span>
     
-    <h2 style="font-size: 1.8em; font-weight: 800; margin-bottom: 15px;">Misión</h2>
+ <h2 style="font-size: 1.8em; font-weight: 800; margin-bottom: 15px;">Misión</h2>
 <p>
-  En SAI Ingeniería, trabajamos para ofrecer <strong style="color: #147ecb;">servicios de inspección y certificación técnica</strong> en sistemas de gas, garantizando el cumplimiento de la normativa vigente y la seguridad de nuestros clientes.
+  Velar por la <strong class="green">seguridad</strong>, la <strong class="green">eficiencia</strong> y el <strong class="green">cumplimiento normativo</strong> en las instalaciones y sistemas de <strong class="green">Gas Licuado de Petróleo (GLP)</strong> en San Andrés, mediante inspecciones <strong class="green">imparciales</strong>, <strong class="green">profesionales</strong> y <strong class="green">técnicamente competentes</strong> que contribuyan al <strong class="green">bienestar</strong> de la comunidad y la <strong class="green">preservación del entorno natural</strong> de la isla.
 </p>
-<p>
-  Nuestra labor se fundamenta en la <strong style="color: #147ecb;">calidad, independencia técnica y responsabilidad social</strong>, apoyando el desarrollo de una infraestructura energética segura y sostenible.
-</p>
+
+
 
 
     <img src="mision.jpg" alt="Trabajadores de SAI Ingeniería" style="margin-top: 25px; max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
@@ -934,13 +1007,11 @@ nav a:focus::before {
 <div id="modal-vision" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-vision')">&times;</span>
-    <h2 class="modal-title">Nuestra Visión</h2>
-    <p class="modal-text">
-      En SAI Ingeniería, proyectamos un futuro donde lideramos el sector de 
-      <strong class="green">certificaciones de gas y servicios de inspección</strong> 
-      con altos estándares técnicos y humanos. Queremos ser reconocidos no solo por nuestra experiencia, sino también por nuestro 
-      <strong class="green">compromiso ético y responsabilidad social</strong>.
-    </p>
+   <h2 class="modal-title">Nuestra Visión</h2>
+<p class="modal-text">
+  Ser el <strong class="green">organismo de inspección de GLP</strong> referente en la <strong class="green">región insular del Caribe colombiano</strong>, reconocido por su <strong class="green">competencia técnica</strong>, <strong class="green">transparencia</strong> y <strong class="green">compromiso con la mejora continua</strong>, garantizando un <strong class="green">servicio seguro</strong> y <strong class="green">sostenible</strong> para los habitantes y visitantes de <strong class="green">San Andrés</strong>.
+</p>
+
     <p class="modal-text">
       Nuestra visión es expandir nuestros servicios a nivel nacional, manteniendo una cultura organizacional basada en la 
       <strong class="green">mejora continua</strong>, la <strong class="green">innovación</strong>, y el 
@@ -970,18 +1041,15 @@ nav a:focus::before {
 <div id="modal-opiniones" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-opiniones')">&times;</span>
-    <h2 class="modal-title">Opiniones y Logros</h2>
+    <h2 class="modal-title">Tipo de trabajo</h2>
 
-    <p class="modal-text"><em>"La inspección fue muy profesional y clara. Me explicaron todo el proceso y me sentí seguro con el resultado."</em> <br>– <span class="green">Andrés R., Cliente residencial</span></p>
-    <p class="modal-text"><em>"Excelente atención y cumplimiento de plazos. Los recomendaría sin duda."</em> <br>– <span class="green">Laura P., Administradora de propiedad horizontal</span></p>
-  
-    <h3 class="modal-subtitle">Metas Alcanzadas</h3>
-    <ul class="modal-list">
-      <li>✔️ Más de <strong>3.500 certificaciones</strong> emitidas a nivel nacional.</li>
-      <li>✔️ <strong>12 años</strong> de experiencia en el sector energético.</li>
-      <li>✔️ Presencia en <strong>7 ciudades</strong> del país.</li>
-      <li>✔️ Alianzas con laboratorios acreditados por la <strong>ONAC</strong>.</li>
-    </ul>
+
+  <p class="modal-text">
+  En <strong class="green">SAI Ingeniería</strong> realizamos diferentes tipos de trabajos especializados en <strong class="green">inspección y certificación de instalaciones de GLP</strong>, adaptándonos a las necesidades de cada cliente.
+</p>
+<p class="modal-text">
+  Próximamente podrás conocer en detalle los <strong class="green">procedimientos, alcances y características</strong> de cada uno de nuestros servicios.
+</p>
 
     <img src="opiniones.jpg" alt="Clientes satisfechos de SAI Ingeniería" class="modal-image">
   </div>
@@ -1030,16 +1098,6 @@ function closeModal(id) {
   });
 </script>
 
-<script>
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-</script>
 
 <script>
   let currentSlide = 0;
