@@ -131,8 +131,10 @@ nav a::after {
     .texto-descubre h2 {
       font-size: 3.8em;
       color: #0f68b5;
-      margin-bottom: 20px;
-    }
+      margin-top: -90px;   
+      margin-bottom: 30px;
+      font-weight: bold;   
+  }
 
     .texto-descubre p {
       font-size: 1.8em;
@@ -550,6 +552,8 @@ nav a:focus::before {
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-left: 70px;  
+
 }
 
 .slide {
@@ -780,6 +784,7 @@ nav a:focus::before {
 .sector-empresa {
   text-align: center;
   margin: 50px auto;
+  margin-top: 10px;
   padding: 20px 30px;
   background: linear-gradient(90deg, #00b894, #147ecb);
   border-radius: 12px;
@@ -818,6 +823,134 @@ nav a:focus::before {
   border: none;     
 }
 
+.modal-list {
+  list-style: none;
+  padding-left: 30px;  
+  margin-top: 10px;
+}
+
+.modal-list li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 32px;   
+  font-size: 1rem;
+}
+
+.modal-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: #00b894;    
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;    
+}
+
+.final-text {
+  position: relative;
+  padding-left: 38px;   
+  margin-top: 20px;
+  font-style: italic;   
+}
+
+.final-text::before {
+  content: "✔";               
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: #147ecb;         
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;           
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+.modal-title,
+.modal-subtitle {
+  margin-bottom: 8px; 
+}
+
+.modal-text {
+  margin-top: 0;      
+}
+
+.modal-subtitle {
+  margin-top: 20px;
+  margin-bottom: 8px;   
+  font-size: 1.2rem;
+  color: #147ecb;      
+  font-weight: bold;
+}
+
+.modal-list {
+  list-style: none;
+  padding-left: 30px;
+  margin-top: 10px;
+}
+
+.modal-list li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 32px;
+  font-size: 1rem;
+}
+
+.modal-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: #00b894;  
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.final-text {
+  position: relative;
+  padding-left: 38px;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.final-text::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: #147ecb;   
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.modal-text {
+  margin-top: 0;       
+  line-height: 1.5;    
+}
+
 
 </style>
 
@@ -844,26 +977,38 @@ nav a:focus::before {
 </header>
 <section class="hero">
   <div class="hero-texto">
-<h1 class="hero-title">Certificación, seguridad y confianza</h1>
+<h1>
+  Confiables, precisos y <br>
+  comprometidos con tu seguridad
+</h1>
   </div>
 </section>
 
 <div style="height: 80px;"></div>
 
-  <section class="descubre-content">
-    <div class="texto-descubre">
-      <h2>Descubre SAI Ingeniería</h2>
-      <p>Con más de once años de experiencia, SAI Ingeniería lidera procesos de inspección y certificación de instalaciones de gas en Colombia, garantizando seguridad, cumplimiento normativo y calidad técnica.</p>
-      <a href="#" onclick="openModal('modal-conocenos'); return false;">CONÓCENOS</a>
-    </div>
-
-<div class="descubre-slider">
-  <div class="slider">
-    <img src="Slide1.jpg" class="slide active">
-    <img src="Slide2.jpg" class="slide">
-    <img src="Slide3.jpg" class="slide">
+ <section class="descubre-content">
+  <div class="texto-descubre">
+    <h2>¿Quiénes somos?</h2>
+    <p class="descubre-text">
+      Certificaciones SAI es un Organismo de Inspección de tercera parte, acreditado y comprometido con la 
+      <strong class="green">seguridad</strong>, la <strong class="green">calidad</strong> y el 
+      <strong class="green">cumplimiento normativo</strong> en instalaciones de gas GLP. 
+      Nuestra misión es brindar confianza a los usuarios y al sector mediante inspecciones técnicas 
+      <strong class="green">objetivas</strong>, <strong class="green">imparciales</strong> y 
+      basadas en estándares nacionales vigentes.
+    </p>
+    <a href="#" onclick="openModal('modal-conocenos'); return false;">CONÓCENOS</a>
   </div>
-</div>
+
+  <div class="descubre-slider">
+    <div class="slider">
+      <img src="Slide1.jpg" class="slide active">
+      <img src="Slide2.jpg" class="slide">
+      <img src="Slide3.jpg" class="slide">
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -877,26 +1022,23 @@ nav a:focus::before {
 
   <div class="accesos-grid">
 
-    <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 0)">
-      <img src="InspeccionGas.svg" alt="Inspección técnica de gas">
-      <span>Inspección técnica de gas</span>
-      <div class="descripcion-servicio">Revisión y evaluación de instalaciones de gas para garantizar seguridad y cumplimiento normativo.</div>
-    </a>
+  <a href="javascript:void(0)" class="acceso-item">
+    <img src="InspeccionGas.svg" alt="Inspección técnica de gas">
+    <span>Inspección técnica de gas</span>
+  </a>
 
-    <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 1)">
-  <img src="Certificacion.svg" alt="Certificaciones de instalación residencial y comercial de gas LP">
-  <span>Certificaciones de instalación residencial y comercial de gas LP</span>
-  <div class="descripcion-servicio">Emitimos certificados oficiales para instalaciones de gas LP, en trazados residenciales y comerciales.</div>
-</a>
+  <a href="javascript:void(0)" class="acceso-item">
+    <img src="Certificacion.svg" alt="Certificaciones de instalación residencial y comercial de gas LP">
+    <span>Certificaciones de instalación residencial y comercial de gas LP</span>
+  </a>
 
+  <a href="javascript:void(0)" class="acceso-item">
+    <img src="Auditoria.svg" alt="Personal calificado">
+    <span>Personal calificado</span>
+  </a>
 
-   <a href="#" class="acceso-item" onclick="toggleDescripcion(event, 2)">
-  <img src="Auditoria.svg" alt="Personal calificado">
-  <span>Personal calificado</span>
-  <div class="descripcion-servicio">
-    Contamos con personal altamente calificado y competente para realizar inspecciones precisas de trazados de gas LP.
-  </div>
-</a>
+</div>
+
 
 
   </div>
@@ -943,12 +1085,31 @@ nav a:focus::before {
 
   <div class="contenedor-contacto" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px;">
     
-    <div style="flex: 1; max-width: 45%; font-style: italic; text-align: left; font-size: 20px; line-height: 2.4;">
-      <h2 style="font-size: 30px; font-style: normal;"><strong>📞 Canales de Atención</strong></h2>
-      <p>📧 <strong>Correo general:</strong> Certificacionessaisas@gmail.com</p>
-      <p>📞 <strong>Teléfono:</strong> (311) 234-9611</p>
-      <p>📍 <strong>Dirección:</strong> Carrera 11A # 10 -16, San Andres Islas</p>
-    </div>
+ <div style="flex: 1; max-width: 45%; text-align: left; font-size: 20px; line-height: 2.4;">
+
+  <h2 style="font-size: 30px; font-style: normal;">
+    <strong>📞 Canales de Atención</strong>
+  </h2>
+  
+
+  <h3 style="font-size: 22px; margin-top: 5px;">📋 Para programación de:</h3>
+  <ul style="margin-top: 5px; padding-left: 25px; list-style: none; line-height: 1.8; font-style: italic;">
+    <li>✔ Inspecciones en servicio</li>
+    <li>✔ Inspecciones en servicios comerciales</li>
+    <li>✔ Inspecciones nuevas</li>
+    <li>✔ Inspecciones nuevas comerciales</li>
+    <li>✔ Inspecciones de redes comerciales</li>
+  </ul>
+
+  <p style="margin-top: 15px; font-weight: bold; font-style: italic; color: #0f68b5;">
+    Puedes comunicarte por:
+  </p>
+
+  <p>📧 <strong>Correo general:</strong> Certificacionessaisas@gmail.com</p>
+  <p>📞 <strong>Teléfono:</strong> (311) 234-9611</p>
+  <p>📍 <strong>Dirección:</strong> Carrera 11A # 10 -16, San Andres Islas</p>
+</div>
+
 
 <div style="
   width: 2px;
@@ -960,9 +1121,9 @@ nav a:focus::before {
 
     <div style="flex: 1; max-width: 45%; text-align: left;">
       <div style="margin-bottom: 20px;">
-<h3 style="font-weight: bold; font-size: 28px;">🛈 IMPORTANTE</h3>
+<h3 style="font-weight: bold; font-size: 28px;">🛈 Déjanos tus datos y nos pondremos en contacto contigo</h3>
         <p style="font-size: 18px;">Si deseas solicitar un servicio o inspección, por favor deja tu mensaje en el formulario.</p>
-        <p style="font-size: 18px; margin-top: 10px;">Si tienes una <strong>queja o reclamo</strong>, también puedes escribirnos directamente a:</p>
+        <p style="font-size: 18px; margin-top: 10px;">En caso de <strong>PQR o apelaciones</strong>, también puedes comunicarte directamente por:</p>
         <p style="font-size: 18px;"><strong>Correo:</strong> Pqrcertificacionessaisas@gmail.com</p>
         <p style="font-size: 18px;"><strong>Línea de atención:</strong> (311) 234-9611</p>
       </div>
@@ -982,7 +1143,7 @@ nav a:focus::before {
 
 
   <footer>
-    © 2025 SAI Ingeniería - Todos los derechos reservados.
+    © 2025 Certificaciones SAI - Todos los derechos reservados.
   </footer>
 
 <div id="modal-mision" class="modal">
@@ -1022,16 +1183,15 @@ nav a:focus::before {
 </div>
 
 
-
 <div id="modal-trabajo" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-trabajo')">&times;</span>
-    <h2 class="modal-title">Nuestro Trabajo</h2>
+    <h2 class="modal-title">Nuestro trabajo</h2>
     <p class="modal-text">
-      En <span class="green">SAI Ingeniería</span>, nos dedicamos a brindar soluciones con un enfoque técnico riguroso, donde cada proyecto se ejecuta bajo estrictos controles de calidad y cumplimiento normativo. Nuestro trabajo comienza con un diagnóstico preciso y termina con una verificación exhaustiva que garantiza la seguridad del cliente y el entorno.
+      Nos especializamos en la <strong class="green">inspección y certificación de trazados de gas GLP</strong>, garantizando que cada instalación cumpla con los más altos estándares de seguridad. 
     </p>
     <p class="modal-text">
-      Más allá de prestar un servicio, nos enfocamos en construir confianza. Nuestro equipo de expertos está comprometido con la <span class="green">transparencia, puntualidad y asesoría permanente</span>, asegurando que cada cliente comprenda cada paso del proceso técnico y legal involucrado en nuestras certificaciones.
+      Nuestro compromiso es brindar <strong class="green">confianza, bienestar y protección</strong> a los usuarios de <em>San Andrés</em>, promoviendo un entorno seguro y eficiente en el uso del gas.
     </p>
     <img src="trabajo.jpg" alt="Proceso de trabajo en SAI Ingeniería" class="modal-image">
   </div>
@@ -1041,37 +1201,51 @@ nav a:focus::before {
 <div id="modal-opiniones" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-opiniones')">&times;</span>
-    <h2 class="modal-title">Tipo de trabajo</h2>
-
-
-  <p class="modal-text">
-  En <strong class="green">SAI Ingeniería</strong> realizamos diferentes tipos de trabajos especializados en <strong class="green">inspección y certificación de instalaciones de GLP</strong>, adaptándonos a las necesidades de cada cliente.
-</p>
+    <h2 class="modal-title">Tipo de Trabajo</h2>
 <p class="modal-text">
-  Próximamente podrás conocer en detalle los <strong class="green">procedimientos, alcances y características</strong> de cada uno de nuestros servicios.
+  <strong class="green">Certificaciones SAI</strong> cuenta actualmente con el alcance necesario para realizar inspecciones en trazados de gas GLP en las siguientes modalidades:
 </p>
-
-    <img src="opiniones.jpg" alt="Clientes satisfechos de SAI Ingeniería" class="modal-image">
+<ul class="modal-list">
+  <li>Inspecciones en servicio</li>
+  <li>Inspecciones en servicios comerciales</li>
+  <li>Inspecciones nuevas</li>
+  <li>Inspecciones nuevas comerciales</li>
+  <li>Inspecciones de redes comerciales</li>
+</ul>
+<p class="modal-text final-text">
+  <em>Estamos autorizados para verificar que las instalaciones cumplan con la normativa vigente, asegurando la <strong class="green">seguridad</strong>, la <strong class="green">eficiencia</strong> y el <strong class="green">cumplimiento técnico</strong> en cada tipo de inspección.</em>
+</p>
+    <img src="opiniones.jpg" alt="Tipos de trabajo realizados por Certificaciones SAI" class="modal-image">
   </div>
 </div>
+
 
 <div id="modal-conocenos" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-conocenos')">&times;</span>
-    <h2 class="modal-title">¡Estamos en proceso de acreditación ante ONAC!</h2>
+    
+    <h2 class="modal-title">Alcance de inspecciones</h2>
     <p class="modal-text">
-      En <strong class="green">SAI Ingeniería</strong> estamos dando un paso importante hacia la excelencia: nos encontramos en proceso de acreditación ante <strong class="green">ONAC (Organismo Nacional de Acreditación de Colombia)</strong>.
+      Contamos con el alcance necesario para realizar inspecciones en diferentes modalidades, incluyendo:
     </p>
+    <ul class="modal-list">
+      <li>Inspecciones en servicio</li>
+      <li>Inspecciones en servicios comerciales</li>
+      <li>Inspecciones nuevas</li>
+      <li>Inspecciones nuevas comerciales</li>
+      <li>Inspecciones de redes comerciales</li>
+    </ul>
+
+    <h3 class="modal-subtitle">Nuestro equipo</h3>
     <p class="modal-text">
-      Esta acreditación permitirá que nuestros servicios de inspección y certificación cumplan con los más altos estándares de calidad reconocidos a nivel nacional e internacional. Gracias a este proceso, nuestros clientes podrán contar con aún más confianza, transparencia y respaldo técnico en cada uno de sus proyectos.
+      Operamos con un equipo de profesionales capacitados y tecnología adecuada para garantizar la 
+      <strong class="green">confiabilidad</strong> de nuestros dictámenes técnicos.
     </p>
-    <p class="modal-text">
-      ONAC verifica que los organismos acreditados operen con imparcialidad, competencia y coherencia. Esto significa que, una vez completado este proceso, nuestros procedimientos estarán validados bajo normas internacionales como la <strong class="green">ISO/IEC 17020</strong>.
+
+    <p class="modal-text final-text">
+      <em>Nos enfocamos en proteger la vida, los bienes y el entorno, promoviendo instalaciones seguras 
+      y funcionales en todo el territorio de <strong>San Andrés y Providencia</strong>.</em>
     </p>
-    <p class="modal-text">
-      ¡En SAI Ingeniería creemos firmemente en la mejora continua y trabajamos día a día para asegurar servicios seguros, eficientes y con verdadero impacto positivo en el país!
-    </p>
-    <img src="onac.jpg" alt="Proceso de acreditación ONAC" class="modal-image">
   </div>
 </div>
 
